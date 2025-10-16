@@ -19,7 +19,7 @@ class BarInstance extends InstanceBase {
 
 		this.setActionDefinitions(getActionDefinitions(this))
         this.setVariableDefinitions(getVariableDefinitions(this)) // these are values we expose to the user, we do not read them back
-        this.setVariableValues({'armedTrack': -1},)   // initial values, can be multiple values
+        this.setVariableValues({'armedTrack': -1},{'playStop': 0},)   // initial values, can be multiple values
         this.setFeedbackDefinitions(getFeedbackDefinitions(this))
         this.setPresetDefinitions(getPresetDefinitions(this))
         
@@ -292,7 +292,8 @@ class BarInstance extends InstanceBase {
                         
                         case 'rehRecPb':
                         globalVars.rehRecPb = cmdOperand[1]
-                        this.checkFeedbacks('rehRecPb')
+                        this.setVariableValues({'rehRecPb': globalVars.rehRecPb},)
+                       this.checkFeedbacks('rehRecPb')
                         break
 
                         case 'monitor':
@@ -302,6 +303,7 @@ class BarInstance extends InstanceBase {
 
                         case 'aheadInPast':
                         globalVars.aheadInPast = cmdOperand[1]
+                        this.setVariableValues({'aheadInPast': globalVars.aheadInPast},)
                         this.checkFeedbacks('aheadInPast')
                         break
 
@@ -319,8 +321,9 @@ class BarInstance extends InstanceBase {
                             
                         case 'playStop':
                         
-                        globalVars.playStop = cmdOperand[1]
-                        this.setVariable('playStop', globalVars.playStop)
+                        //setPlayStop()
+                            globalVars.playStop = cmdOperand[1]
+                            this.setVariableValues({'playStop': globalVars.playStop},)
 
                         break
 
