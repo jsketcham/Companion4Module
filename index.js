@@ -19,7 +19,10 @@ class BarInstance extends InstanceBase {
 
 		this.setActionDefinitions(getActionDefinitions(this))
         this.setVariableDefinitions(getVariableDefinitions(this)) // these are values we expose to the user, we do not read them back
-        this.setVariableValues({'armedTrack': -1},{'playStop': 0},)   // initial values, can be multiple values
+        this.setVariableValues({
+            'armedTrack': -1,
+            'playStop': 0,
+        },)   // initial values, can be multiple values
         this.setFeedbackDefinitions(getFeedbackDefinitions(this))
         this.setPresetDefinitions(getPresetDefinitions(this))
         
